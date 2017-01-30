@@ -1,64 +1,66 @@
-let express = require('express');
-let massive = require('massive');
+const express = require('express');
+const massive = require('massive');
 
-let app = express();
-let db = massive.connectSync({db : "pgguide"});
-
-app.listen(3000, function () {
-    console.log('listening on port 3000');
+const app = express();
+const db = massive.connectSync({
+  db: 'pgguide',
 });
 
-app.get('/', function (req, res) {
-    res.send('HelloWorld');
+app.listen(3000, () => {
+  console.log('listening on port 3000');
 });
 
-app.get('/users', function (req, res) {
-    db.users.find({}, function (err, results) {
-        console.log(results);
-        res.send(results)
-    });
+app.get('/', (req, res) => {
+  res.send('HelloWorld');
 });
 
-app.get('/users/:id', function (req, res) {
-	let user_id = {
-		id: req.params.id
-	}
-
-    db.users.find(user_id, function (err, result) {
-		res.send(result);
-	})
+app.get('/users', (req, res) => {
+  db.users.find({}, (err, results) => {
+    console.log(results);
+    res.send(results);
+  });
 });
 
-app.get('/products', function (req, res) {
-    db.products.find({}, function (err, results) {
-        console.log(results);
-        res.send(results)
-    });
+app.get('/users/:id', (req, res) => {
+  const userId = {
+    id: req.params.id,
+  };
+
+  db.users.find(userId, (err, result) => {
+    res.send(result);
+  });
 });
 
-app.get('/products/:id', function (req, res) {
-	let product_id = {
-		id: req.params.id
-	}
-
-    db.products.find(product_id, function (err, result) {
-		res.send(result);
-	})
+app.get('/products', (req, res) => {
+  db.products.find({}, (err, results) => {
+    console.log(results);
+    res.send(results);
+  });
 });
 
-app.get('/purchases', function (req, res) {
-    db.purchases.find({}, function (err, results) {
-        console.log(results);
-        res.send(results)
-    });
+app.get('/products/:id', (req, res) => {
+  const productId = {
+    id: req.params.id,
+  };
+
+  db.products.find(productId, (err, result) => {
+    res.send(result);
+  });
 });
 
-app.get('/purchases/:id', function (req, res) {
-	let purchase_id = {
-		id: req.params.id
-	}
+app.get('/purchases', (req, res) => {
+  db.purchases.find({}, (err, results) => {
+    console.log(results);
+    res.send(results);
+  });
+});
 
-    db.purchases.find(purchase_id, function (err, result) {
-		res.send(result);
-	})
+app.get('/purchases/:id', (req, res) => {
+  const purchaseId = {
+    id: req.params.id,
+  };
+
+  db.purchases.find(purchaseId, (err, result) => {
+    res.send(result);
+  });
 });
