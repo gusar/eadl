@@ -2,6 +2,8 @@
 logs
 *.log
 npm-debug.log*
+.vscode
+.eslintrc.js
 
 # Runtime data
 pids
