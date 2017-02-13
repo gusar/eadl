@@ -47,6 +47,14 @@ app.get('/products/injectable/:id?', (req, res) => {
   });
 });
 
+// Parameterised query
+app.get('/products/pq/:id?', (req, res) => {
+  const productId = req.query.id;
+
+  db.run('select * from products where id = $1', [productId], (err, result) => {
+    res.send(result);
+  });
+});
 
 app.get('/purchases', (req, res) => {
   db.purchases.find({}, (err, results) => {
