@@ -8,11 +8,6 @@ module.exports = {
         name: req.query.name,
       },
     })
-    .findOne({
-      where: {
-        name: req.query.name,
-      },
-    })
       .then((mycase) => {
         if (!mycase) {
           return mycase

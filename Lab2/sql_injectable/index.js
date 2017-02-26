@@ -42,7 +42,7 @@ app.get('/products', (req, res) => {
 app.get('/products/injectable/:title?', (req, res) => {
   const productTitle = req.query.title;
 
-  const query = `select * from products where title = "${productTitle}"`;
+  const query = `select * from products where title = '${productTitle}'`;
   console.log(query);
 
   db.run(query, (err, result) => {
@@ -51,10 +51,18 @@ app.get('/products/injectable/:title?', (req, res) => {
 });
 
 // Parameterised query
-app.get('/products/pq/:title?', (req, res) => {
-  const productId = req.query.title;
+app.get('/products/pq:title?', (req, res) => {
+  const productTitle = req.query.title;
+  db.run('select * from products where title = $1', [productTitle], (err, result) => {
+    res.send(result);
+  });
+});
 
-  db.run('select * from products where id = $1', [productId], (err, result) => {
+// Stored procedure
+app.get('/products/sp:id?', (req, res) => {
+  const id = req.query.id;
+  console.log(id);
+  db.run('select GET_PRODUCT_BY_ID($1)', [id], (err, result) => {
     res.send(result);
   });
 });
