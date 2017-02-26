@@ -43,7 +43,7 @@ module.exports = {
         type: Sequelize.DATE,
       },
       duration: {
-        type: Sequelize.INTERVAL,
+        type: Sequelize.INTEGER,
       },
       result: {
         type: Sequelize.BOOLEAN,

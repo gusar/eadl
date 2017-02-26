@@ -1,5 +1,3 @@
-
-
 module.exports = (sequelize, DataTypes) => {
   const Courtroom = sequelize.define('Courtroom', {
     number: DataTypes.STRING,

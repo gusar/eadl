@@ -11,7 +11,7 @@ module.exports = {
         type: Sequelize.STRING,
       },
       room: {
-        type: Sequelize.NUMBER,
+        type: Sequelize.INTEGER,
       },
       ext: {
         type: Sequelize.STRING,

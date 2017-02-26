@@ -1,7 +1,7 @@
 module.exports = (sequelize, DataTypes) => {
   const Judge = sequelize.define('Judge', {
     name: DataTypes.STRING,
-    room: DataTypes.NUMBER,
+    room: DataTypes.INTEGER,
     ext: DataTypes.STRING,
   }, {
     classMethods: {

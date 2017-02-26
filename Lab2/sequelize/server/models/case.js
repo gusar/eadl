@@ -1,9 +1,7 @@
 module.exports = (sequelize, DataTypes) => {
   const Case = sequelize.define('Case', {
-    claimant_id: DataTypes.INTEGER,
-    respondent_id: DataTypes.INTEGER,
     start_date: DataTypes.DATE,
-    duration: DataTypes.INTERVAL,
+    duration: DataTypes.INTEGER,
     result: DataTypes.BOOLEAN,
   }, {
     classMethods: {
@@ -15,6 +13,14 @@ module.exports = (sequelize, DataTypes) => {
         Case.belongsTo(models.Courtroom, {
           foreignKey: 'id',
           as: 'courtroom_id',
+        });
+        Case.belongsTo(models.Participant, {
+          foreignKey: 'id',
+          as: 'claimant_id',
+        });
+        Case.belongsTo(models.Participant, {
+          foreignKey: 'id',
+          as: 'respondent_id',
         });
       },
     },
