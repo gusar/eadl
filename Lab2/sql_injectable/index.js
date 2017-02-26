@@ -39,17 +39,20 @@ app.get('/products', (req, res) => {
 });
 
 // SQL INJECTABLE
-app.get('/products/injectable/:id?', (req, res) => {
-  const productId = req.query.id;
+app.get('/products/injectable/:title?', (req, res) => {
+  const productTitle = req.query.title;
 
-  db.run(`select * from products where id = ${productId}`, (err, result) => {
+  const query = `select * from products where title = "${productTitle}"`;
+  console.log(query);
+
+  db.run(query, (err, result) => {
     res.send(result);
   });
 });
 
 // Parameterised query
-app.get('/products/pq/:id?', (req, res) => {
-  const productId = req.query.id;
+app.get('/products/pq/:title?', (req, res) => {
+  const productId = req.query.title;
 
   db.run('select * from products where id = $1', [productId], (err, result) => {
     res.send(result);
