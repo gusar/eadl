@@ -1,0 +1,27 @@
+{
+  "name": "lab-3",
+  "main": "server.js",
+  "scripts": {
+    "start": "nodemon server.js"
+  },
+  "dependencies": {
+    "bcrypt": "^1.0.2",
+    "body-parser": "^1.15.0",
+    "eslint": "^3.18.0",
+    "express": "^4.13.4",
+    "jsonwebtoken": "^5.7.0",
+    "mongoose": "^4.4.5",
+    "morgan": "^1.7.0",
+    "pg": "^6.1.4",
+    "pg-hstore": "^2.3.2",
+    "sequelize": "^3.30.2"
+  },
+  "devDependencies": {
+    "eslint": "^3.15.0",
+    "eslint-config-airbnb": "^14.1.0",
+    "eslint-plugin-import": "^2.2.0",
+    "eslint-plugin-jsx-a11y": "^4.0.0",
+    "eslint-plugin-react": "^6.9.0",
+    "install-peerdeps": "^1.1.3"
+  }
+}
